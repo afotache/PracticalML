@@ -1,0 +1,889 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Practical Machine Learning - Final Project Report</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;}
+h1
+	{margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:"Calibri",sans-serif;
+	color:#345A8A;}
+h2
+	{margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:"Calibri",sans-serif;
+	color:#4F81BD;}
+h3
+	{margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Calibri",sans-serif;
+	color:#4F81BD;}
+h4
+	{margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;
+	color:#4F81BD;}
+h5
+	{margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;
+	color:#4F81BD;
+	font-weight:normal;
+	font-style:italic;}
+h6
+	{margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;
+	color:#4F81BD;
+	font-weight:normal;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{mso-style-link:"Caption Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;
+	font-style:italic;}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	text-align:center;
+	page-break-after:avoid;
+	font-size:18.0pt;
+	font-family:"Calibri",sans-serif;
+	color:#345A8A;
+	font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:9.0pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	text-align:center;
+	page-break-after:avoid;
+	font-size:15.0pt;
+	font-family:"Calibri",sans-serif;
+	color:#345A8A;
+	font-weight:bold;}
+p.MsoDate, li.MsoDate, div.MsoDate
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	text-align:center;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;}
+p.MsoBlockText, li.MsoBlockText, div.MsoBlockText
+	{margin-top:5.0pt;
+	margin-right:0in;
+	margin-bottom:5.0pt;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#4F81BD;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoBibliography, li.MsoBibliography, div.MsoBibliography
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;}
+p.MsoTocHeading, li.MsoTocHeading, div.MsoTocHeading
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:107%;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:"Calibri",sans-serif;
+	color:#365F91;}
+p.FirstParagraph, li.FirstParagraph, div.FirstParagraph
+	{mso-style-name:"First Paragraph";
+	margin-top:9.0pt;
+	margin-right:0in;
+	margin-bottom:9.0pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;}
+p.Compact, li.Compact, div.Compact
+	{mso-style-name:Compact;
+	margin-top:1.8pt;
+	margin-right:0in;
+	margin-bottom:1.8pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;}
+p.Author, li.Author, div.Author
+	{mso-style-name:Author;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	text-align:center;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;}
+p.Abstract, li.Abstract, div.Abstract
+	{mso-style-name:Abstract;
+	margin-top:15.0pt;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Cambria",serif;}
+p.DefinitionTerm, li.DefinitionTerm, div.DefinitionTerm
+	{mso-style-name:"Definition Term";
+	margin:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;
+	font-weight:bold;}
+p.Definition, li.Definition, div.Definition
+	{mso-style-name:Definition;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;}
+p.TableCaption, li.TableCaption, div.TableCaption
+	{mso-style-name:"Table Caption";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;
+	font-style:italic;}
+p.ImageCaption, li.ImageCaption, div.ImageCaption
+	{mso-style-name:"Image Caption";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;
+	font-style:italic;}
+p.Figure, li.Figure, div.Figure
+	{mso-style-name:Figure;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;}
+p.FigurewithCaption, li.FigurewithCaption, div.FigurewithCaption
+	{mso-style-name:"Figure with Caption";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;}
+span.CaptionChar
+	{mso-style-name:"Caption Char";
+	mso-style-link:Caption;}
+span.VerbatimChar
+	{mso-style-name:"Verbatim Char";
+	mso-style-link:"Source Code";
+	font-family:Consolas;}
+p.SourceCode, li.SourceCode, div.SourceCode
+	{mso-style-name:"Source Code";
+	mso-style-link:"Verbatim Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	background:#F8F8F8;
+	word-break:break-all;
+	font-size:12.0pt;
+	font-family:"Cambria",serif;}
+span.KeywordTok
+	{mso-style-name:KeywordTok;
+	font-family:Consolas;
+	color:#204A87;
+	background:#F8F8F8;
+	font-weight:bold;}
+span.DataTypeTok
+	{mso-style-name:DataTypeTok;
+	font-family:Consolas;
+	color:#204A87;
+	background:#F8F8F8;}
+span.DecValTok
+	{mso-style-name:DecValTok;
+	font-family:Consolas;
+	color:#0000CF;
+	background:#F8F8F8;}
+span.BaseNTok
+	{mso-style-name:BaseNTok;
+	font-family:Consolas;
+	color:#0000CF;
+	background:#F8F8F8;}
+span.FloatTok
+	{mso-style-name:FloatTok;
+	font-family:Consolas;
+	color:#0000CF;
+	background:#F8F8F8;}
+span.ConstantTok
+	{mso-style-name:ConstantTok;
+	font-family:Consolas;
+	color:black;
+	background:#F8F8F8;}
+span.CharTok
+	{mso-style-name:CharTok;
+	font-family:Consolas;
+	color:#4E9A06;
+	background:#F8F8F8;}
+span.SpecialCharTok
+	{mso-style-name:SpecialCharTok;
+	font-family:Consolas;
+	color:black;
+	background:#F8F8F8;}
+span.StringTok
+	{mso-style-name:StringTok;
+	font-family:Consolas;
+	color:#4E9A06;
+	background:#F8F8F8;}
+span.VerbatimStringTok
+	{mso-style-name:VerbatimStringTok;
+	font-family:Consolas;
+	color:#4E9A06;
+	background:#F8F8F8;}
+span.SpecialStringTok
+	{mso-style-name:SpecialStringTok;
+	font-family:Consolas;
+	color:#4E9A06;
+	background:#F8F8F8;}
+span.ImportTok
+	{mso-style-name:ImportTok;
+	font-family:Consolas;
+	background:#F8F8F8;}
+span.CommentTok
+	{mso-style-name:CommentTok;
+	font-family:Consolas;
+	color:#8F5902;
+	background:#F8F8F8;
+	font-style:italic;}
+span.DocumentationTok
+	{mso-style-name:DocumentationTok;
+	font-family:Consolas;
+	color:#8F5902;
+	background:#F8F8F8;
+	font-weight:bold;
+	font-style:italic;}
+span.AnnotationTok
+	{mso-style-name:AnnotationTok;
+	font-family:Consolas;
+	color:#8F5902;
+	background:#F8F8F8;
+	font-weight:bold;
+	font-style:italic;}
+span.CommentVarTok
+	{mso-style-name:CommentVarTok;
+	font-family:Consolas;
+	color:#8F5902;
+	background:#F8F8F8;
+	font-weight:bold;
+	font-style:italic;}
+span.OtherTok
+	{mso-style-name:OtherTok;
+	font-family:Consolas;
+	color:#8F5902;
+	background:#F8F8F8;}
+span.FunctionTok
+	{mso-style-name:FunctionTok;
+	font-family:Consolas;
+	color:black;
+	background:#F8F8F8;}
+span.VariableTok
+	{mso-style-name:VariableTok;
+	font-family:Consolas;
+	color:black;
+	background:#F8F8F8;}
+span.ControlFlowTok
+	{mso-style-name:ControlFlowTok;
+	font-family:Consolas;
+	color:#204A87;
+	background:#F8F8F8;
+	font-weight:bold;}
+span.OperatorTok
+	{mso-style-name:OperatorTok;
+	font-family:Consolas;
+	color:#CE5C00;
+	background:#F8F8F8;
+	font-weight:bold;}
+span.BuiltInTok
+	{mso-style-name:BuiltInTok;
+	font-family:Consolas;
+	background:#F8F8F8;}
+span.ExtensionTok
+	{mso-style-name:ExtensionTok;
+	font-family:Consolas;
+	background:#F8F8F8;}
+span.PreprocessorTok
+	{mso-style-name:PreprocessorTok;
+	font-family:Consolas;
+	color:#8F5902;
+	background:#F8F8F8;
+	font-style:italic;}
+span.AttributeTok
+	{mso-style-name:AttributeTok;
+	font-family:Consolas;
+	color:#C4A000;
+	background:#F8F8F8;}
+span.RegionMarkerTok
+	{mso-style-name:RegionMarkerTok;
+	font-family:Consolas;
+	background:#F8F8F8;}
+span.InformationTok
+	{mso-style-name:InformationTok;
+	font-family:Consolas;
+	color:#8F5902;
+	background:#F8F8F8;
+	font-weight:bold;
+	font-style:italic;}
+span.WarningTok
+	{mso-style-name:WarningTok;
+	font-family:Consolas;
+	color:#8F5902;
+	background:#F8F8F8;
+	font-weight:bold;
+	font-style:italic;}
+span.AlertTok
+	{mso-style-name:AlertTok;
+	font-family:Consolas;
+	color:#EF2929;
+	background:#F8F8F8;}
+span.ErrorTok
+	{mso-style-name:ErrorTok;
+	font-family:Consolas;
+	color:#A40000;
+	background:#F8F8F8;
+	font-weight:bold;}
+span.NormalTok
+	{mso-style-name:NormalTok;
+	font-family:Consolas;
+	background:#F8F8F8;}
+.MsoChpDefault
+	{font-size:12.0pt;
+	font-family:"Cambria",serif;}
+.MsoPapDefault
+	{margin-bottom:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link="#4F81BD" vlink=purple>
+
+<div class=WordSection1>
+
+<p class=MsoTitle>Practical Machine Learning - Final Project Report</p>
+
+<p class=Author>Alina Fotache</p>
+
+<p class=MsoDate>May 8, 2016</p>
+
+<h1><a name=overview></a>Overview</h1>
+
+<p class=FirstParagraph>This report is found at my GitHub repo: <a
+href="https://github.com/afotache/PracticalML">https://github.com/afotache/PracticalML</a>
+One thing that people regularly do is quantify how much of a particular
+activity they do, but they rarely quantify how well they do it. In this
+project, your goal will be to use data from accelerometers on the belt,
+forearm, arm, and dumbell of 6 participants.This project uses data from these
+accelerometers of 6 participants, which were asked to perform barbell lifts
+correctly and incorrectly in 5 different ways. The data sources are specified
+below, in two files - a training set and a test set. The objective is to
+predict the manner in which they did the exercise. This is the
+&quot;classe&quot; variable in the training set. This report will explain the
+model, how crossed validation was used, what is the expected sample error and
+the reasoning behind the choices made. We will also include the results of
+predicting 20 different test cases.</p>
+
+<h1><a name=data-sources></a>Data Sources</h1>
+
+<p class=FirstParagraph>The training data for this project are available here: <a
+href="https://d396qusza40orc.cloudatatrainront.net/predmachlearn/pml-training.csv">https://d396qusza40orc.cloudatatrainront.net/predmachlearn/pml-training.csv</a>
+The test data are available here: <a
+href="https://d396qusza40orc.cloudatatrainront.net/predmachlearn/pml-testing.csv">https://d396qusza40orc.cloudatatrainront.net/predmachlearn/pml-testing.csv</a>
+The data for this project comes from this original source: <a
+href="http://groupware.les.inf.puc-rio.br/har">http://groupware.les.inf.puc-rio.br/har</a>.</p>
+
+<h1><a name=download-and-prepare-data></a>1. Download and Prepare Data</h1>
+
+<p class=SourceCode><span class=CommentTok><span style='font-size:11.0pt'>#
+Downloading training and testing files</span></span><br>
+<span class=KeywordTok><span style='font-size:11.0pt'>library</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(RCurl)</span></span></p>
+
+<p class=SourceCode><span class=KeywordTok><span style='font-size:11.0pt'>library</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(caret)</span></span></p>
+
+<p class=SourceCode><span class=KeywordTok><span style='font-size:11.0pt'>library</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(randomForest)</span></span></p>
+
+<p class=SourceCode><span class=NormalTok><span style='font-size:11.0pt'>trainset
+&lt;-</span></span><span class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>getURL</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>ssl.verifypeer=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>0L, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>followlocation=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>1L)</span></span><br>
+<span class=KeywordTok><span style='font-size:11.0pt'>writeLines</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(trainset,</span></span><span
+class=StringTok><span style='font-size:11.0pt'>'training.csv'</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>)</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>testset &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>getURL</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>ssl.verifypeer=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>0L, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>followlocation=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>1L)</span></span><br>
+<span class=KeywordTok><span style='font-size:11.0pt'>writeLines</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(testset,</span></span><span
+class=StringTok><span style='font-size:11.0pt'>'testing.csv'</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>)</span></span><br>
+<br>
+<span class=NormalTok><span style='font-size:11.0pt'>datatrain &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>read.csv</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;pml-training.csv&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>)</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>datatest &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>read.csv</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;pml-testing.csv&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>)</span></span><br>
+<span class=KeywordTok><span style='font-size:11.0pt'>dim</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(datatrain)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt'>##
+[1] 19622   160</span></span></p>
+
+<p class=SourceCode><span class=KeywordTok><span style='font-size:11.0pt'>dim</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(datatest)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt'>##
+[1]  20 160</span></span></p>
+
+<p class=FirstParagraph>Now let's look at both datatrain and datatest, and when
+using str(datatrain) and str(datatest) we can see that the last one in
+datatrain is 'classe' and the last one in datatest is 'problem_id'. Both of
+these are to be the response variables, which means we have 159 predictor
+variables. We can also clean out the first seven columns, as they represent raw
+data and not very useful. Also, when doing data cleaning, we can also remove a
+lot of the variables populated with values &quot;NA&quot;. Other variables
+withfew missing values, they can be appropriately replaced with numerical
+values (like mean or average), but no need to do this here. So we are left with
+50 predictors and 1 response variable - 'classe'.</p>
+
+<p class=SourceCode><span class=CommentTok><span style='font-size:11.0pt'>#
+From datatrain, remove columns 1 through 7, columns with mostly NA values and
+those with near zero variance</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>datatrain =</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=NormalTok><span style='font-size:11.0pt'>datatrain[,-</span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>c</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>1</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>:</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>7</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>)]</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>ColNA &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>sapply</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(datatrain, function(x) </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>mean</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(</span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>is.na</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(x))) &gt;</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=FloatTok><span style='font-size:11.0pt'>0.95</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>datatrain &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=NormalTok><span style='font-size:11.0pt'>datatrain[, ColNA==F]</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>nzv &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>nearZeroVar</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(datatrain)</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>datatrain &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=NormalTok><span style='font-size:11.0pt'>datatrain[, -nzv]</span></span><br>
+<span class=KeywordTok><span style='font-size:11.0pt'>dim</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(datatrain)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt'>##
+[1] 19622    53</span></span></p>
+
+<h1><a name=overview-of-the-model></a>2. Overview of the Model</h1>
+
+<p class=FirstParagraph>WE've learned in the class about Random Forest and that
+it works best for multivariable datasets. We can also apply a parellel version
+of Random Forest or other data models if the Random Forest doesn't give
+satisfactory results. Before we can apply the Random Forest model, we need to
+divide the training set datatrain into two subsets - one for training and one
+for validation. We will splitt in 70% and 30% and refer to the training subset
+as datatrain_train and the validation set as datatrain_test:</p>
+
+<p class=SourceCode><span class=KeywordTok><span style='font-size:11.0pt'>set.seed</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>1000</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>)</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>inTrain &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>createDataPartition</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(</span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>y=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>datatrain$classe, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>p=</span></span><span
+class=FloatTok><span style='font-size:11.0pt'>0.7</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>list=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>F)</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>datatrain1 &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=NormalTok><span style='font-size:11.0pt'>datatrain[inTrain, ]</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>datatrain2 &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=NormalTok><span style='font-size:11.0pt'>datatrain[-inTrain, ]</span></span><br>
+<span class=KeywordTok><span style='font-size:11.0pt'>dim</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(datatrain1) </span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt'>##
+[1] 13737    53</span></span></p>
+
+<p class=SourceCode><span class=KeywordTok><span style='font-size:11.0pt'>dim</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(datatrain2) </span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt'>##
+[1] 5885   53</span></span></p>
+
+<p class=FirstParagraph>We can also try a 60-40 split to avoid overfitting but
+still have enough data for training.</p>
+
+<p class=SourceCode><span class=CommentTok><span style='font-size:11.0pt'>#
+let's select optimal tuning parameters by using 3-fold cross validation</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>fitControl &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>trainControl</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(</span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>method=</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;cv&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>number=</span></span><span
+class=DecValTok><span style='font-size:11.0pt'>3</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>verboseIter=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>F)</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>fit &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>train</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(classe ~</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=NormalTok><span style='font-size:11.0pt'>., </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>data=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>datatrain1, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>method=</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;rf&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>trControl=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>fitControl)</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>fit$finalModel</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt'>## </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## Call:</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##  randomForest(x = x,
+y = y, mtry = param$mtry) </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##                Type
+of random forest: classification</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##                     
+Number of trees: 500</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## No. of variables
+tried at each split: 27</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##         OOB estimate
+of  error rate: 0.76%</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## Confusion matrix:</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##      A    B    C   
+D    E class.error</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## A 3900    5    0   
+0    1 0.001536098</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## B   24 2629    4   
+1    0 0.010910459</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## C    0   14 2372  
+10    0 0.010016694</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## D    0    2   26
+2220    4 0.014209591</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## E    0    0    5   
+8 2512 0.005148515</span></span></p>
+
+<p class=FirstParagraph>To view the decision tree using fancyRpart you can run
+this commands: fancyRpartPlot(fit, palettes=c(&quot;Greys&quot;,
+&quot;Oranges&quot;))</p>
+
+<p class=MsoBodyText><img border=0 width=521 height=669 id="Picture 1"
+src="practicalml_finalproj_files/image001.jpg"></p>
+
+<p class=MsoBodyText>Now let's predict the 'classe' and see the confusion
+matrix to test the results:</p>
+
+<p class=SourceCode><span class=CommentTok><span style='font-size:11.0pt'>#
+Predict classe for datatrain2</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>predicts &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>predict</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(fit, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>newdata=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>datatrain2)</span></span><br>
+<span class=KeywordTok><span style='font-size:11.0pt'>confusionMatrix</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(datatrain2$classe, predicts)</span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt'>##
+Confusion Matrix and Statistics</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##           Reference</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## Prediction    A    B   
+C    D    E</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##          A 1672   
+2    0    0    0</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##          B    9
+1129    1    0    0</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##          C    0    6
+1017    3    0</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##          D    0   
+0   13  950    1</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##          E    0   
+1    0    7 1074</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## Overall Statistics</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##                                           </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##               
+Accuracy : 0.9927          </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##                  95%
+CI : (0.9902, 0.9947)</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##     No Information
+Rate : 0.2856          </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##     P-Value [Acc
+&gt; NIR] : &lt; 2.2e-16       </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##                                        
+  </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##                  
+Kappa : 0.9908          </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##  Mcnemar's Test
+P-Value : NA              </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## Statistics by Class:</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## </span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##                     
+Class: A Class: B Class: C Class: D Class: E</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##
+Sensitivity            0.9946   0.9921   0.9864   0.9896   0.9991</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##
+Specificity            0.9995   0.9979   0.9981   0.9972   0.9983</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## Pos Pred
+Value         0.9988   0.9912   0.9912   0.9855   0.9926</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## Neg Pred
+Value         0.9979   0.9981   0.9971   0.9980   0.9998</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>##
+Prevalence             0.2856   0.1934   0.1752   0.1631   0.1827</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## Detection
+Rate         0.2841   0.1918   0.1728   0.1614   0.1825</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## Detection
+Prevalence   0.2845   0.1935   0.1743   0.1638   0.1839</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## Balanced
+Accuracy      0.9971   0.9950   0.9923   0.9934   0.9987</span></span></p>
+
+<p class=FirstParagraph>We observe accuracy = 99.24%, and predicted accuracy
+for the out_of_sample error is 0.76%.</p>
+
+<h1><a name=predictions-summary></a>3. Predictions Summary</h1>
+
+<p class=FirstParagraph>We see that Random Forest provides a good fit based on
+the training set datatrain. Now let's apply it to test set datatest consisting
+of 20 rows.</p>
+
+<p class=SourceCode><span class=CommentTok><span style='font-size:11.0pt'>#
+function to write the 20 files as suggested in instructions</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>predicts &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>predict</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(fit, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>newdata=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>datatest)</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>predicts &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>as.character</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(predicts)</span></span><br>
+<br>
+<span class=NormalTok><span style='font-size:11.0pt'>pml_write_files &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=NormalTok><span style='font-size:11.0pt'>function(x) {</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>    n &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>length</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(x)</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>    for(i in </span></span><span
+class=DecValTok><span style='font-size:11.0pt'>1</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>:n) {</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>        filename &lt;-</span></span><span
+class=StringTok><span style='font-size:11.0pt'> </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>paste0</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(</span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;problem_id_&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>, i, </span></span><span
+class=StringTok><span style='font-size:11.0pt'>&quot;.txt&quot;</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>)</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>        </span></span><span
+class=KeywordTok><span style='font-size:11.0pt'>write.table</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(x[i], </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>file=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>filename, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>quote=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>F, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>row.names=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>F, </span></span><span
+class=DataTypeTok><span style='font-size:11.0pt'>col.names=</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>F)</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>    }</span></span><br>
+<span class=NormalTok><span style='font-size:11.0pt'>}</span></span><br>
+<br>
+<span class=KeywordTok><span style='font-size:11.0pt'>pml_write_files</span></span><span
+class=NormalTok><span style='font-size:11.0pt'>(predicts)</span></span><br>
+<br>
+<span class=NormalTok><span style='font-size:11.0pt'>predicts  </span></span></p>
+
+<p class=SourceCode><span class=VerbatimChar><span style='font-size:11.0pt'>## 
+[1] &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;A&quot;
+&quot;E&quot; &quot;D&quot; &quot;B&quot; &quot;A&quot; &quot;A&quot;
+&quot;B&quot; &quot;C&quot; &quot;B&quot; &quot;A&quot; &quot;E&quot;
+&quot;E&quot; &quot;A&quot;</span></span><br>
+<span class=VerbatimChar><span style='font-size:11.0pt'>## [18] &quot;B&quot;
+&quot;B&quot; &quot;B&quot;</span></span></p>
+
+<h1><a name=conclusion></a>4. Conclusion</h1>
+
+<p class=FirstParagraph>1.We downloaded the data, did some data cleaning to
+remove columns that we're not impacting the model, variables with values 'NA'
+exceeding 95% of all of their values were chosen to be retained. </p>
+
+<p class=FirstParagraph>2. We splitt training data in two sets (for training
+and validation purposes using 70-30 split). </p>
+
+<p class=FirstParagraph>3. Started with Random Forest as the best model for
+multivarible problems, and we got very good accuracy and very small
+out_of_sample error. So we concluded that Random Forest provides the model for
+this project. Also available is the parallel version of Random Forest. </p>
+
+<p class=FirstParagraph>4. 3-fold cross validation was chosen because 2, 4, or
+5-fold cross validations did not produce any improvements. And performance time
+was also higher.</p>
+
+</div>
+
+</body>
+
+</html>
